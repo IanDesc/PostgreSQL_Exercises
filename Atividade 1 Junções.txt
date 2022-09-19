@@ -1,0 +1,31 @@
+--Nome: Ian Da Silva Correia
+--Nome: Matheus Alves Novais
+
+-- 1
+SELECT nome, codigo
+FROM auxiliar
+WHERE bilingue = true AND salario > 1000;
+
+-- 2
+SELECT projetista.codigo,projetista.nome,funcionario.departamento
+FROM projetista NATURAL JOIN funcionario
+WHERE projetista.tipo = 'Iniciante';
+
+-- 3
+SELECT engenheiro.nome, engenheiro.salario, funcionario.departamento
+FROM engenheiro NATURAL JOIN funcionario
+WHERE crea LIKE 'PR%';
+
+-- 4 
+SELECT DISTINCT departamento
+FROM engenheiro NATURAL JOIN funcionario
+WHERE especialidade = 'Civil';
+
+-- 5
+SELECT departamento
+FROM projetista NATURAL JOIN funcionario
+WHERE tipo = 'Senior'
+   AND departamento IN
+   (SELECT departamento
+   FROM auxiliar NATURAL JOIN funcionario
+   WHERE bilingue = true);
